@@ -2,13 +2,18 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
 from fastapi.middleware.cors import CORSMiddleware
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, TextClassificationPipeline
-import torch
 from datetime import datetime
 import re
-from fastapi.staticfiles import StaticFiles
 
-MODEL_ID = "distilbert-base-uncased-finetuned-sst-2-english"  # binary pos/neg
+# --- NLTK for lightweight sentiment analysis ---
+import nltk
+from nltk.sentiment import SentimentIntensityAnalyzer
+nltk.download("vader_lexicon")
+
+
+sia = SentimentIntensityAnalyzer()
+
+
 
 app = FastAPI(title="Sentiment API")
 
@@ -21,9 +26,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_ID)
-pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, device=0 if torch.cuda.is_available() else -1)
 
 # Simple neutral heuristic: if confidence < 0.60, call it NEUTRAL
 NEUTRAL_THRESHOLD = 0.60
@@ -35,12 +37,16 @@ class PredictBatchIn(BaseModel):
     texts: List[str]
 
 def classify(text: str) -> Dict[str, Any]:
-    out = pipe(text, truncation=True)[0]  # {'label': 'POSITIVE', 'score': 0.99}
-    label = out["label"]
-    score = float(out["score"])
-    if score < NEUTRAL_THRESHOLD:
+    scores = sia.polarity_scores(text)
+    compound = scores["compound"]
+    if compound >= 0.06:
+        label = "POSITIVE"
+    elif compound <= -0.04:
+        label = "NEGATIVE"
+    else:
         label = "NEUTRAL"
-    return {"sentiment": label, "confidence": score}
+    return {"sentiment": label, "confidence": abs(compound)}
+
 
 @app.get("/health")
 def health():
