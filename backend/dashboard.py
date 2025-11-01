@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 import altair as alt
 
-API_URL = os.environ.get("API_URL", "http://127.0.0.1:8000")
+API_URL = os.environ.get("API_URL", "https://amazon-reviews-sentiment-analyser-backend.onrender.com/")
 
 st.set_page_config(page_title="Sentiment Dashboard", layout="wide")
 
