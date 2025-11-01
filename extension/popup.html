@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  
+  <div id="charts">
+    <h3>Sentiment Distribution</h3>
+    <canvas id="pieChart" width="290" height="200"></canvas>
+    
+    <h3>Average Confidence</h3>
+    <canvas id="confidenceChart" width="290" height="80"></canvas>
+    
+    <h3>Sentiment Trends Over Time</h3>
+    <p style="font-size: 11px; color: #666; margin: 0 0 8px 0;">Shows sentiment distribution across reviews</p>
+    <canvas id="timeTrendChart" width="290" height="250"></canvas>
+  </div>
+
+  <script src="chart.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
