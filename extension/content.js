@@ -1,5 +1,5 @@
 // === CONFIG ===
-const API_URL = "http://127.0.0.1:8000"; // change to deployed URL
+const API_URL = "https://amazon-reviews-sentiment-analyser.onrender.com/"; // changed to deployed URL
 const BATCH_SIZE = 10;
 const CONF_LABEL_KEY = "data-sentiment-labeled";
 
