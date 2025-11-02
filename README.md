@@ -9,6 +9,11 @@ This system:
 - Classifies sentiment (Positive / Neutral / Negative) using a **FastAPI backend**
 - Aggregates and visualizes insights in an **interactive Streamlit dashboard**
 
+<img width="1382" height="809" alt="image" src="https://github.com/user-attachments/assets/600d27f2-042e-49e8-8e34-b3309fdce623" />
+<img width="1504" height="820" alt="image" src="https://github.com/user-attachments/assets/56df0d1f-b341-4731-93c6-22f73bc72d2b" />
+<img width="1476" height="837" alt="image" src="https://github.com/user-attachments/assets/821ff7af-ac81-418f-9578-1d1bf0f7eadd" />
+
+
 ## Live Demo
 You can try out the project in two parts:
 
