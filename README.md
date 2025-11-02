@@ -13,6 +13,9 @@ This system:
 <img width="1504" height="820" alt="image" src="https://github.com/user-attachments/assets/56df0d1f-b341-4731-93c6-22f73bc72d2b" />
 <img width="1476" height="837" alt="image" src="https://github.com/user-attachments/assets/821ff7af-ac81-418f-9578-1d1bf0f7eadd" />
 
+## Click on the amazon sentiment extension on chrome for quick analysis while shopping
+<img width="900" height="700" alt="image" src="https://github.com/user-attachments/assets/bbce539f-8d12-49f2-9080-35adbc6bd786" />
+
 
 ## Live Demo
 You can try out the project in two parts:
@@ -26,6 +29,8 @@ The FastAPI service is deployed on **Render**.
 
 ### 2. Interactive Dashboard
 The Streamlit dashboard visualizes live sentiment data collected from Amazon reviews.
+
+- **SET API URL on the left sidebar to :  https://amazon-reviews-sentiment-analyser-backend.onrender.com/**
 
 - **Live Dashboard:** [https://amazon-reviews-sentiment-analyser.onrender.com/](https://amazon-reviews-sentiment-analyser.onrender.com/)
 
